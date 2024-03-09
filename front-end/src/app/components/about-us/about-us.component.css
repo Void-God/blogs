@@ -1,0 +1,12 @@
+.about-us-content{
+    max-width: 700px;
+    text-align: justify;
+    margin: 0 auto;
+    padding: 12px;
+    background-color: palegoldenrod;
+    border-radius: 5px;
+    color: #5a5353;
+}
+.about-us {
+    border-top: 1px solid #000;
+}

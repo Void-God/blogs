@@ -1,0 +1,41 @@
+<div>
+    <form *ngIf="getIsAuthenticated()" [formGroup]="blog" class="blog-add-form" (submit)="submitBlogForm()">
+        <div class="form-floating">
+            <textarea name="title" class="form-control resize-none" placeholder="Leave a comment here"
+                formControlName="title"></textarea>
+            <label for="floatingTextarea">Blog Title</label>
+        </div>
+        <div [hidden]="!title.valid && (title.dirty || title.touched)">
+            <span class="msg" *ngIf="title.errors?.required">Title is required</span>            
+        </div>
+        <div class="form-floating mt-2">
+            <textarea name="about" class="form-control" placeholder="Leave a comment here" formControlName="about"
+                rows="4"></textarea>
+            <label for="floatingTextarea">About Blog</label>
+        </div>
+        <div *ngIf="edit === undefined; else elseBlock">
+            <button type="submit" class="btn btn-primary mt-2" [disabled]="!blog.valid">Add Blog</button>            
+        </div>
+        <ng-template #elseBlock>
+            <button type="submit" class="btn btn-primary mt-2" [disabled]="!blog.valid">Update Blog</button>  
+        </ng-template>
+    </form>
+</div>
+<div id="mutationElement" class="container-fluid mt-2">
+    <div class="row">
+        <div class="no-blog-found" *ngIf="allBlogs.length === 0">
+            No Blog Found!
+        </div>
+        <div class="no-auth" *ngIf="!getIsAuthenticated()">
+            <span>
+                *Login is required before you can add blog
+            </span>
+        </div>
+        <ng-container  *ngFor="let blog of allBlogs; index as i">
+            <div  class="col-xl-3 col-lg-4 col-sm-6" *ngIf="blogShowStatus(blog.blogTitle)">
+                <app-blog-card  [blog]="blog" [index]="i" (blogDelete)="deleteBlog($event)"
+                    (blogEdit)="editBlogInialize($event)"></app-blog-card>
+            </div>
+        </ng-container>
+    </div>
+</div>

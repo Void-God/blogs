@@ -1,0 +1,18 @@
+.resize-none {
+    resize: none;
+}
+.blog-add-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0px 12px;
+}
+.no-blog-found {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+.no-auth {
+    color:#dc3545;
+    text-align: center;
+    font-size: 18px;
+}

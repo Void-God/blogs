@@ -1,0 +1,9 @@
+.login-form {
+    max-width: 500px;
+    padding: 0px 12px;
+    margin: 0 auto;
+}
+.form-control {
+    border: 1px solid #000;
+    padding: 12px;
+}

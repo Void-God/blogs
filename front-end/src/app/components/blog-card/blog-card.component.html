@@ -1,0 +1,11 @@
+<div class="card mb-3 ">
+    <img [src]="images[blog.image]" class="card-img-top img-fluid" alt="blog">
+    <div class="card-body">
+        <h5 class="card-title">{{blog.blogTitle}}</h5>
+        <p class="card-text">{{blog.aboutBlog}}</p>
+        <div class="d-flex flex-row justify-content-between" *ngIf="isAuthenticated()">
+            <button type="submit" class="btn btn-primary my-2" (click)="editThisBlog()">Edit Blog</button>
+            <button type="submit" class="btn btn-danger my-2 ms-auto" (click)="deleteThisBlog()">Delete Blog</button>
+        </div>
+    </div>
+</div>

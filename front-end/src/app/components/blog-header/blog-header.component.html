@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary header-main">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="/assets/images/blog.png" alt="logo" class="img-fluid logo" />
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['']">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['about-us']">About Us</a>
+        </li>
+        <li *ngIf="!authService.getAuth(); else elseBlock" class="nav-item">
+          <a class="nav-link" [routerLink]="['login']">Login</a>
+        </li>
+        <ng-template #elseBlock>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logOut()" [routerLink]="['']">Logout</a>
+          </li>
+        </ng-template>
+        <!-- <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li> -->
+      </ul>
+      <form class="d-flex" role="search">
+        <input ngModel class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="search"
+          #search="ngModel" (keyup)="searchFor(search)" class="form-control">
+      </form>
+    </div>
+  </div>
+</nav>
